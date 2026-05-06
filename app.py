@@ -9,7 +9,7 @@ from sklearn.metrics.pairwise import rbf_kernel
 from custom_transformers import *
 
 # ---- Load model ----
-model = joblib.load("housing_model.pkl3")
+model = joblib.load("housing_model.pkl")
 
 # ---- Page config ----
 st.set_page_config(page_title="Housing Predictor", layout="centered")
