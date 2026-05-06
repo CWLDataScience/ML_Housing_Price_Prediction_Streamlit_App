@@ -3,6 +3,12 @@ import pandas as pd
 import joblib
 import pydeck as pdk
 from custom_transformers import *
+# ---Load data for visuzal---
+@st.cache_data
+def load_data():
+    return pd.read_csv("housing.csv")
+
+df = load_data()
 
 # ---- Load model ----
 model = joblib.load("housing_model.pkl")
@@ -14,14 +20,42 @@ st.set_page_config(page_title="Housing Predictor", layout="centered")
 st.title("California Housing Price Predictor")
 st.markdown("Explore housing prices and make predictions")
 
+
+# ---house vs price scatter plot ---
+st.title("California Housing Price Predictor")
+st.markdown("Explore housing prices and make predictions")
+st.subheader(" Price vs Income")
+st.scatter_chart(
+    df,
+    x="median_income",
+    y="median_house_value",
+    size=20,
+)
+
+
+# ---price distribution histogram ---
+import altair as alt
+
+st.subheader(" Price Distribution")
+
+chart = alt.Chart(df).mark_bar().encode(
+    alt.X("median_house_value:Q", bin=alt.Bin(maxbins=50), title="House Price"),
+    alt.Y("count()", title="Frequency")
+)
+
+st.altair_chart(chart, use_container_width=True)
+
+
+# ---price by ocean proximity bar chart ---
+st.subheader("🌊 Price by Ocean Proximity")
+
+st.bar_chart(
+    df.groupby("ocean_proximity")["median_house_value"].mean()
+)
+
+
 # ---- MAP SECTION (PyDeck improved) ----
 st.subheader("🗺️ Housing Price Map")
-
-@st.cache_data
-def load_data():
-    return pd.read_csv("housing.csv")
-
-df = load_data()
 
 # sample for performance
 df_sample = df.sample(n=3000, random_state=42).copy()
