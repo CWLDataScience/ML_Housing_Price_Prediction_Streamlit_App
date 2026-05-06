@@ -49,9 +49,9 @@ layer = pdk.Layer(
 )
 
 view_state = pdk.ViewState(
-    latitude=36.5,
-    longitude=-119.5,
-    zoom=5,
+    latitude=df_sample["latitude"].mean(),   # auto center
+    longitude=df_sample["longitude"].mean(),
+    zoom=7.5,
     pitch=0,
 )
 
@@ -59,18 +59,20 @@ st.pydeck_chart(pdk.Deck(
     layers=[layer],
     initial_view_state=view_state,
     tooltip={
-        "html": """
-        <b>Price:</b> ${median_house_value}<br/>
-        <b>Income:</b> {median_income}<br/>
-        <b>Age:</b> {housing_median_age}<br/>
-        <b>Rooms:</b> {total_rooms}<br/>
-        <b>Bedrooms:</b> {total_bedrooms}<br/>
-        <b>Population:</b> {population}<br/>
-        <b>Households:</b> {households}<br/>
-        <b>Ocean:</b> {ocean_proximity}
-        """,
-        "style": {"backgroundColor": "black", "color": "white"}
-    }
+    "html": """
+    <b>Price:</b> ${median_house_value}<br/>
+    <b>Latitude:</b> {latitude}<br/>
+    <b>Longitude:</b> {longitude}<br/>
+    <b>Income:</b> {median_income}<br/>
+    <b>Age:</b> {housing_median_age}<br/>
+    <b>Rooms:</b> {total_rooms}<br/>
+    <b>Bedrooms:</b> {total_bedrooms}<br/>
+    <b>Population:</b> {population}<br/>
+    <b>Households:</b> {households}<br/>
+    <b>Ocean:</b> {ocean_proximity}
+    """,
+    "style": {"backgroundColor": "black", "color": "white"}
+}
 ))
 st.markdown("### Price Legend:")
 
