@@ -33,7 +33,7 @@ st.scatter_chart(
 # ---price distribution histogram ---
 import altair as alt
 
-st.subheader("📈 Price Distribution")
+st.subheader(" Price Distribution")
 
 chart = alt.Chart(df).mark_bar().encode(
     alt.X("median_house_value:Q", bin=alt.Bin(maxbins=50), title="House Price"),
@@ -42,7 +42,7 @@ chart = alt.Chart(df).mark_bar().encode(
 
 st.altair_chart(chart, use_container_width=True)
 # ---price by ocean proximity bar chart ---
-st.subheader("🌊 Price by Ocean Proximity")
+st.subheader(" Price by Ocean Proximity")
 
 st.bar_chart(
     df.groupby("ocean_proximity")["median_house_value"].mean()
@@ -58,7 +58,7 @@ st.bar_chart(
 
 
 # ---- MAP SECTION (PyDeck improved) ----
-st.subheader("🗺️ Housing Price Map")
+st.subheader(" Housing Price Map")
 
 
 
@@ -129,7 +129,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ---- INPUT SECTION ----
-st.subheader("📥 Enter Property Details")
+st.subheader(" Enter Property Details")
 
 col1, col2 = st.columns(2)
 
@@ -153,7 +153,7 @@ with col2:
 st.divider()
 
 # ---- PREDICTION ----
-if st.button("📈 Predict Price"):
+if st.button(" Predict Price"):
 
     input_data = pd.DataFrame([{
         "longitude": longitude,
@@ -169,8 +169,8 @@ if st.button("📈 Predict Price"):
 
     try:
         prediction = model.predict(input_data)[0]
-        st.success(f"💰 Predicted Price: ${prediction:,.0f}")
+        st.success(f" Predicted Price: ${prediction:,.0f}")
 
     except Exception as e:
-        st.error("⚠️ Something broke. Likely input mismatch.")
+        st.error(" Something broke. Likely input mismatch.")
         st.text(str(e))
