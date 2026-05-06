@@ -1,6 +1,6 @@
-streamlit
-pandas
-scikit-learn
-joblib
-numpy
-pydeck
+scikit-learn==1.6.0
+numpy==1.26.4
+pandas==2.2.3
+joblib==1.4.2
+streamlit==1.37.1
+pydeck==0.8.0
