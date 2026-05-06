@@ -18,6 +18,45 @@ df = load_data()
 # ---- Header ----
 
 
+
+
+# ---house vs price scatter plot ---
+st.title("California Housing Price Predictor")
+st.markdown("Explore housing prices and make predictions")
+st.subheader(" Price vs Income")
+st.scatter_chart(
+    df,
+    x="median_income",
+    y="median_house_value",
+    size=20,
+)
+# ---price distribution histogram ---
+import altair as alt
+
+st.subheader("📈 Price Distribution")
+
+chart = alt.Chart(df).mark_bar().encode(
+    alt.X("median_house_value:Q", bin=alt.Bin(maxbins=50), title="House Price"),
+    alt.Y("count()", title="Frequency")
+)
+
+st.altair_chart(chart, use_container_width=True)
+# ---price by ocean proximity bar chart ---
+st.subheader("🌊 Price by Ocean Proximity")
+
+st.bar_chart(
+    df.groupby("ocean_proximity")["median_house_value"].mean()
+)
+
+
+
+
+
+
+
+
+
+
 # ---- MAP SECTION (PyDeck improved) ----
 st.subheader("🗺️ Housing Price Map")
 
