@@ -6,6 +6,8 @@ This project is an end-to-end machine learning application that predicts housing
 ##  Data Source
 
 The dataset used in this project is the California Housing dataset, popularized by *Hands-On Machine Learning with Scikit-Learn & TensorFlow* by Aurélien Géron. It is derived from the 1990 U.S. Census and is widely used for machine learning practice and benchmarking.
+Note on data:
+The California Housing dataset used in this project originates from the 1990 U.S. Census and is commonly used for educational purposes. It is not covered by this repository’s MIT license.
 
 ##  Live Demo
 
