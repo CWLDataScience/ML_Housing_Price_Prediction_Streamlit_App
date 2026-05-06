@@ -111,8 +111,6 @@ Dataset based on the California Housing dataset from the book *Hands-On Machine 
 ---
 
 # Screenshot
-```md
-![App Screenshot](image.png)
-```
+![App Screenshot](screenshot.jpg)
 
 ---
