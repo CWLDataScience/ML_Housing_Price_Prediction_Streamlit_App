@@ -1,11 +1,7 @@
 import streamlit as st
 import pandas as pd
 import joblib
-import numpy as np
 import pydeck as pdk
-from sklearn.base import BaseEstimator, TransformerMixin
-from sklearn.cluster import KMeans
-from sklearn.metrics.pairwise import rbf_kernel
 from custom_transformers import *
 
 # ---- Load model ----
