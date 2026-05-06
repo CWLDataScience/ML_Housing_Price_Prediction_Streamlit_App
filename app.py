@@ -50,11 +50,11 @@ layer = pdk.Layer(
 )
 
 view_state = pdk.ViewState(
-    latitude=df_sample["latitude"].mean(),   # auto center
-    longitude=df_sample["longitude"].mean(),
-    zoom=7.5,    # 🔥 closer to California
+    latitude=33.91,   # auto center
+    longitude=-118,
+    zoom=7,
+    pitch=0,
 )
-
 st.pydeck_chart(pdk.Deck(
     layers=[layer],
     initial_view_state=view_state,
