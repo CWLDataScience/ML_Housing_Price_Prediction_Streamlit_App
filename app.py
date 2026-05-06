@@ -34,7 +34,7 @@ def ratio_feature_names(transformer, feature_names_in):
     return ["ratio"]
 
 # ---- Load model ----
-model = joblib.load("housing_model.pkl")
+model = joblib.load("housing_model.pkl2")
 
 # ---- Page config ----
 st.set_page_config(page_title="Housing Predictor", layout="centered")
