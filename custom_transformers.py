@@ -72,3 +72,4 @@ def make_default_numeric_pipeline():
         SimpleImputer(strategy="median"),
         StandardScaler()
     )
+cluster_similarity_transformer = ClusterSimilarity(n_clusters=10, gamma=1.0, random_state=42)
